@@ -9,5 +9,23 @@
  * @returns {function}
  */
 module.exports.formatAddressWithOrder = function formatAddressWithOrder(order) {
-  throw new Error('Not implemented'); // remove me and write a solution
+  return function (information) {
+    var result = "";
+    var values = [];
+    values = Object.values(information).toString().split(',');
+    var keys = [];
+    keys = Object.keys(information).toString().split(',');
+    for (var i = 0; i < order.length; i++) {
+        for (var j = 0; j < order[i].length; j++) {
+            if (keys[j] === order[i]) {
+                result += values[j];
+                if (i !== order.length - 1) {
+                  result += ", ";
+                }
+                break;
+            }
+        }
+    }
+    return result;
+  }
 };

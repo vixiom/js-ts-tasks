@@ -4,5 +4,9 @@
  * @returns {function}
  */
 module.exports.formatAddress = function formatAddress() {
-  throw new Error('Not implemented'); // remove me and write a solution
+    return function (information) {
+        var result;
+        result = Object.values(information);
+        return result.toString().replaceAll(",", ", ");
+    }
 };
