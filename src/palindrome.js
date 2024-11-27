@@ -13,5 +13,12 @@
  * @returns {function}
  */
 module.exports.palindrome = function palindrome(TestUtils) {
-  throw new Error('Not implemented'); // remove this line and create your solution
+    return function isPalindrome(string) {
+        string = string.toLowerCase().replace(/[^a-z]/g, '');
+        var palindromeString = "";
+        for (var i = string.length - 1; i > -1; i--) {
+            palindromeString += string[i];
+        }
+        return palindromeString === string;
+    }
 };

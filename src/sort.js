@@ -9,5 +9,47 @@
  * @returns {function}
  */
 module.exports.sort = function sort(TestUtils) {
-  throw new Error('Not implemented'); // remove this line and create your solution
+    return function sortComparator (...array) {
+        var type = "undefined";
+        for (var i = 0; i < array.length; i++) {
+            if (typeof array[i] !== "number") {
+                break;
+            }
+            if (i === array.length - 1) {
+                type = "number";
+            }
+        }
+        for (var i = 0; i < array.length; i++) {
+            if (typeof array[i] !== "string") {
+                break;
+            }
+            if (i === array.length - 1) {
+                type = "string";
+            }
+        }
+        if (type === 'number') {
+            for (var i = 0; i < array.length; i++) {
+                for (var j = 0; j < (array.length - i - 1); j++) {
+                    if (array[j] < array[j + 1]) {
+                        var temp = array[j];
+                        array[j] = array[j + 1];
+                        array[j + 1] = temp;
+                    }
+                }
+            }
+        }
+        if (type === 'string') {
+            for (var i = 0; i < array.length; i++) {
+                for (var j = 0; j < (array.length - i - 1); j++) {
+                    if (array[j + 1].localeCompare(array[j]) > -1) {
+                        var temp = array[j];
+                        array[j] = array[j + 1];
+                        array[j + 1] = temp;
+                    }
+                }
+            }
+        }
+        return array;
+    }
 };
+
