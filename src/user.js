@@ -1,5 +1,18 @@
 class User {
-  // Your code for class User here
+    #firstName;
+    #lastName;
+    #age;
+    constructor(firstName, lastName, age) {
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.age = age;
+    }
+    set Name(firstName) {
+        this.firstName = #firstName;
+    }
+    get name() {
+        return (this.firstName + " " + this.lastName);
+    }
 }
 
 /**
