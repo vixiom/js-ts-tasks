@@ -13,12 +13,8 @@
  * @returns {function}
  */
 module.exports.palindrome = function palindrome(TestUtils) {
-    return function isPalindrome(string) {
-        string = string.toLowerCase().replace(/[^a-z]/g, '');
-        var palindromeString = "";
-        for (var i = string.length - 1; i > -1; i--) {
-            palindromeString += string[i];
-        }
-        return palindromeString === string;
+    return function checkIfPalindrome (str) {
+        str = str.toLowerCase().replace(/[^a-z]/g, '');
+        return TestUtils.isPalindrome.call({str});
     }
 };

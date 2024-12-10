@@ -26,13 +26,8 @@ module.exports.payments = function payments(TestUtils) {
     return function sumAllObjectProperties (income, debts) {
         incomeArray = Object.values(income);
         debtsArray = Object.values(debts);
-        var sum = 0;
-        for (var i = 0; i < incomeArray.length; i++) {
-            sum += incomeArray[i];
-        }
-        for (var i = 0; i < debtsArray.length; i++) {
-            sum -= debtsArray[i];
-        }
-        return sum;
+        plusMoney = TestUtils.sumAllObjectProperties.call({...incomeArray});
+        minusMoney = TestUtils.sumAllObjectProperties.call({...debtsArray});
+        return plusMoney - minusMoney;
     }
 };
