@@ -1,17 +1,40 @@
+const {createInvalidExceptionError} = require("mocha/lib/errors");
+const {use} = require("chai");
+
 class User {
     #firstName;
-    #lastName;
+    #secondName;
     #age;
-    constructor(firstName, lastName, age) {
-        this.firstName = firstName;
-        this.lastName = lastName;
-        this.age = age;
+    constructor(firstName, secondName, age) {
+        if (typeof(firstName) === 'string' && typeof(secondName) === 'string' && typeof(age) === 'number') {
+            this.#firstName = firstName;
+            this.#secondName = secondName;
+            this.#age = age;
+        }
+        else {
+            throw createInvalidExceptionError();
+        }
     }
-    set Name(firstName) {
-        this.firstName = #firstName;
+    set firstName(firstName) {
+        this.#firstName = firstName;
+    }
+    set lastName(secondName) {
+        this.#secondName = secondName;
+    }
+    set age(age) {
+        this.#age = age;
+    }
+    get age() {
+        return this.#age;
     }
     get name() {
-        return (this.firstName + " " + this.lastName);
+        return `${this.#firstName} ${this.#secondName}`;
+    }
+    introduce () {
+        return `My name is ${this.#firstName} ${this.#secondName}, I\'m ${this.#age}`;
+    }
+    celebrateBirthday() {
+        this.#age = this.#age + 1;
     }
 }
 
@@ -29,7 +52,8 @@ module.exports.User = User;
  * @returns {User}
  */
 module.exports.createUser = function (firstName, secondName, age) {
-  throw new Error('Not implemented'); // remove this line and put your code here
+    var user = new User(firstName, secondName, age);
+    return user;
 };
 
 /**
@@ -38,7 +62,11 @@ module.exports.createUser = function (firstName, secondName, age) {
  * @returns {Array<User>}
  */
 module.exports.createUsers = function (data) {
-  throw new Error('Not implemented'); // remove this line and put your code here
+    var users = [];
+    for (var i = 0; i < data.length; i ++) {
+        users.push(new User(data[i].firstName, data[i].secondName, data[i].age));
+    }
+    return users;
 };
 
 /**
@@ -48,7 +76,13 @@ module.exports.createUsers = function (data) {
  * @returns {Array<Users>}
  */
 module.exports.findUsersByAge = function (users, age) {
-  throw new Error('Not implemented'); // remove this line and put your code here
+    var usersWithSpecifiedAge = [];
+    for (var i = 0; i < users.length; i++) {
+        if (users[i].age === age) {
+            usersWithSpecifiedAge.push(users[i]);
+        }
+    }
+    return usersWithSpecifiedAge;
 };
 
 /**
@@ -57,7 +91,16 @@ module.exports.findUsersByAge = function (users, age) {
  * @returns {function(*): *[]}
  */
 module.exports.createUsersSortFn = function (TestUtils) {
-  throw new Error('Not implemented'); // remove this line and put your code here
+    return function sortComparator (...users) {
+        for (var i = 0; i < users.length; i++) {
+            for (var j = 0; j < (users.length - i - 1); j++) {
+                if (TestUtils.sortComparatorByAge(users[j], users[j + 1]) > 0) {
+                    [users[j], users[j + 1]] = [users[j + 1], users[j]];
+                }
+            }
+        }
+        return users.flat();
+    }
 };
 
 /**
@@ -66,5 +109,10 @@ module.exports.createUsersSortFn = function (TestUtils) {
  * @return {Array<User>}
  */
 module.exports.celebrate = function (users) {
-  throw new Error('Not implemented'); // remove this line and put your code here
+    for (var i = 0; i < users.length; i++) {
+        if (i % 2 === 1) {
+            users[i].celebrateBirthday();
+        }
+    }
+    return users;
 };
