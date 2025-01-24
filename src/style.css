@@ -3,3 +3,134 @@
 body {
   background: linear-gradient(45deg, #FFD6C3, #FCB5FF, #BEC6FF);
 }
+.topBar {
+  padding: 15% 0% 0% 5%;
+  justify-content: space-between;
+  color: white;
+  display: flex;
+  align-items: center;
+  width: 90%;
+}
+.back {
+  width: 80%;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
+.options {
+  width: 80%;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
+.profile {
+  padding: 4% 0% 0% 5%;
+  width: 90%;
+  display: flex;
+  align-items: center;
+  color: white;
+}
+.avatar {
+  margin-right: 10%;
+  padding: 7%;
+  background-color: #7B6FC5;
+  border-radius: 50%;
+}
+.statistic {
+  gap: 10%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.stats {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+}
+.info {
+  padding: 4% 0% 0% 5%;
+  color: white;
+  width: 90%;
+}
+.buttons {
+  padding: 4% 0% 0% 5%;
+  display: flex;
+  flex-direction: row;
+  color: white;
+  gap: 2%;
+}
+.button {
+  border-radius: 5%;
+  padding: 2% 7% 2% 7%;
+  outline: gray solid 1px;
+}
+.highlights {
+  padding: 4% 0% 5% 5%;
+  color: white;
+  display: flex;
+  flex-direction: row;
+  gap: 5%;
+}
+.iconBorder {
+  border: 2px solid #505050;
+  border-radius: 50%;
+  padding: 3px;
+  aspect-ratio: 1/1;
+}
+.icon {
+  height: 55px;
+  border-radius: 50%;
+  aspect-ratio: 1 / 1;
+  padding: 7%;
+  background-color: #7B6FC5;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.highlight {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+.tapBar {
+  padding-top: 4%;
+  border-top: 1px solid #262626;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+}
+.leftUnderline {
+  padding-top: 4%;
+  width: 50%;
+  border-bottom: 2px solid white;
+}
+.posts {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.post {
+  width: 33%;
+
+}
+.tabMenu {
+  padding-top: 2%;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+}
+
+
+
+
+
+
+
+
+
+
+
+
