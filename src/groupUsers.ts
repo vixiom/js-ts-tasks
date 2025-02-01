@@ -10,6 +10,18 @@
  * @returns {Object<employees: Array<any>, contractors: Array<any>>}
  */
 module.exports.groupUsers = function (users: Array<unknown>): Record<'employees' | 'contractors', Array<unknown>> {
-  // replace Array<unknown> with your own types
-  throw new Error('Not implemented'); // delete this line and write your code
+  type User = {
+    type: 'employees' | 'contractors';
+  }
+  var employees: User[] = [];
+  var contractors: User[] = [];
+  for (var i = 0; i < users.length; i++) {
+    if ((users[i] as User).type.toLowerCase() === 'employee') {
+      employees.push(users[i] as User);
+    }
+    else {
+      contractors.push(users[i] as User);
+    }
+  }
+  return {contractors, employees};
 };

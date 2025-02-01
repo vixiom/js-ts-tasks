@@ -6,5 +6,22 @@
  * @returns {boolean}
  */
 module.exports.pangram = function (word: string | number): boolean {
-  throw new Error('Not implemented'); // delete this line and write your code
+   if (typeof word === "string") {
+     var alphabet = "abcdefghijklmnopqrstuvwxyz";
+     for (var i = 0; i < alphabet.length; i++) {
+       if (!(word.includes(alphabet[i] as string))) {
+         return false;
+       }
+     }
+   }
+   else {
+     word = word.toString();
+     var numbers = "0123456789";
+     for (var i = 0; i < numbers.length; i++) {
+       if (!(word.includes(numbers[i] as string))) {
+         return false;
+       }
+     }
+   }
+   return true;
 };
